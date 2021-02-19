@@ -1,7 +1,7 @@
 var form=document.getElementById('addForm');
 var itemList=document.getElementById('items');
 var filter=document.getElementById('filter');
-let books=[];
+let books=JSON.parse(localStorage.getItem('moBooksList')||'[]');
  
 
 //form submit event
@@ -25,7 +25,7 @@ function addItem(e){
     //CREATE DELETE BUTTON
     var deleteBtn=document.createElement('button');
     //add class to delete button
-    deleteBtn.className='btn btn-danger btn-sm float-right delete';
+    deleteBtn.className='btn btn-dark btn-sm float-right delete';
     deleteBtn.appendChild(document.createTextNode('X'));
     li.appendChild(deleteBtn);
     itemList.appendChild(li);
@@ -42,10 +42,10 @@ function addItem(e){
 function removeItem(e){
     console.log(1);
     if(e.target.classList.contains('delete')){
-        if(confirm('are you sure?')){
             var li=e.target.parentElement;
             itemList.removeChild(li);
-        }
+
+        
     }
 }
 
